@@ -291,7 +291,7 @@ router.put("/location/:id", (req, res, next) => {
 
 
 
-router.get('/:userid', async(req, res) => {
+router.get('/user/:userid', async(req, res) => {
 
 
     User.aggregate([
