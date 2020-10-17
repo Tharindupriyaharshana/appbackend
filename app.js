@@ -10,7 +10,7 @@ const mobileRoute = require('./routes/mobile');
 const dmobileRoute = require('./routes/drivermobile');
 const driverRoute = require('./routes/driver');
 const vehicleRoute = require('./routes/vehicle');
-
+const userRoute = require('./routes/user')
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader(
@@ -36,6 +36,7 @@ app.use('/mobile', mobileRoute);
 app.use('/driverm', dmobileRoute);
 app.use('/driver', driverRoute);
 app.use('/vehicle', vehicleRoute);
+app.use('/user', userRoute);
 
 
 app.listen(port);
