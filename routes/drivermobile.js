@@ -139,6 +139,7 @@ router.get('/:mobilenum', async(req, res) => {
                     userid: deta,
                     //userstatus: deta[0].user[0].status,
                     otp: otp,
+                    type: deta[0].user[0].type
 
 
                 });

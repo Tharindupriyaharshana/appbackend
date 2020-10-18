@@ -193,7 +193,7 @@ router.put("/location/:id", (req, res, next) => {
         //pickup = documents[0].pickup;
         // drop = documents[0].drop;
         // near = documents[0].near;;
-        type == documents[0].type;
+        type = documents[0].type;
         regdate = documents[0].regdate;
         startdate = documents[0].startdate;
         data();
