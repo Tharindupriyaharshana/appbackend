@@ -14,6 +14,8 @@ const UserSchema = mongoose.Schema({
     type: { type: String, default: "none" },
     regdate: { type: Date, default: "2020.10.12" },
     startdate: { type: Date, default: "2020.10.12" },
+    pay: { type: String, default: "cash" },
+    share: { type: String, default: "none" },
 
 })
 
