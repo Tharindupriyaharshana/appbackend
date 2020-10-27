@@ -364,7 +364,7 @@ router.put("/share/:id", (req, res, next) => {
             address: address,
             email: email,
             gender: gender,
-            status: status,
+            status: req.body.status,
             pickup: pickup,
             drop: drop,
             near: near,

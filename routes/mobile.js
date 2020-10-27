@@ -11,10 +11,29 @@ router.get('/:mobilenum', async(req, res) => {
     let num = [];
     let newuserid = 0;
     let otp;
+    var sender = req.params.mobilenum;
 
+    while (sender.charAt(0) === '+') {
+        sender = sender.substring(1);
+    }
+    while (sender.charAt(0) === '0') {
+        sender = sender.substring(1);
+    }
+    while (sender.charAt(0) === '+') {
+        sender = sender.substring(1);
+    }
+    while (sender.charAt(0) === '9') {
+        sender = sender.substring(1);
+    }
+    while (sender.charAt(0) === '4') {
+        sender = sender.substring(1);
+    }
+
+    var realsender = "94" + sender;
+    console.log(realsender);
     try {
         Mobile.aggregate([
-            { $match: { "mobilenumber": Number(req.params.mobilenum) } },
+            { $match: { "mobilenumber": Number(realsender) } },
 
 
 
@@ -64,7 +83,7 @@ router.get('/:mobilenum', async(req, res) => {
                     const mobiles = new Mobile({
 
                         userid: newuserid,
-                        mobilenumber: req.params.mobilenum,
+                        mobilenumber: realsender,
                     });
                     mobiles.save().then(createdPost => {
                         console.log("post Mobile");
@@ -98,7 +117,7 @@ router.get('/:mobilenum', async(req, res) => {
             var options = {
 
                 'method': 'POST',
-                'url': 'https://app.newsletters.lk/smsAPI?sendsms&apikey=ICcenN1YgHUTYB9vpGzSE8KlEDt6f5xd&apitoken=JIMA1584899484&from=DEMO_SMS&to=' + req.params.mobilenum + '&type=sms&text=' + message,
+                'url': 'https://app.newsletters.lk/smsAPI?sendsms&apikey=ICcenN1YgHUTYB9vpGzSE8KlEDt6f5xd&apitoken=JIMA1584899484&from=DEMO_SMS&to=' + realsender + '&type=sms&text=' + message,
 
 
 
@@ -113,7 +132,7 @@ router.get('/:mobilenum', async(req, res) => {
         function show() {
 
             Mobile.aggregate([
-                { $match: { "mobilenumber": Number(req.params.mobilenum) } },
+                { $match: { "mobilenumber": Number(realsender) } },
 
 
 
