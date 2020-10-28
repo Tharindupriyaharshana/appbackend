@@ -16,6 +16,14 @@ router.get('/:mobilenum', async(req, res) => {
     while (sender.charAt(0) === '+') {
         sender = sender.substring(1);
     }
+    while (sender.charAt(0) === '9') {
+        sender = sender.substring(1);
+    }
+    while (sender.charAt(0) === '4') {
+        sender = sender.substring(1);
+    }
+
+
     while (sender.charAt(0) === '0') {
         sender = sender.substring(1);
     }
@@ -28,6 +36,7 @@ router.get('/:mobilenum', async(req, res) => {
     while (sender.charAt(0) === '4') {
         sender = sender.substring(1);
     }
+
 
     var realsender = "94" + sender;
     console.log(realsender);
