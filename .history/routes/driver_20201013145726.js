@@ -31,11 +31,7 @@ router.put("/:id", (req, res, next) => {
             address: req.body.address,
             email: req.body.email,
             status: "created",
-            nicfront: req.body.nicfront,
-            nicback: req.body.nicback,
-            dliceanfront: req.body.dlifront,
-            dliceanback: req.body.dliback,
-
+            nic: req.body.nic,
             type: req.body.type,
             regdate: req.body.regdate,
 
@@ -63,19 +59,8 @@ router.get('/:driverid', async(req, res) => {
 
     Driver.aggregate([
         { $match: { "userid": Number(req.params.driverid) } },
-
-        {
-            $lookup: {
-                from: "'Vehicles",
-                localField: "userid",
-                foreignField: "userid",
-                as: "Vehicle"
-            }
-
-
-        },
     ]).then((documents => {
-        console.log(documents);
+
         res.status(200).json({ driver: documents })
     }));
 

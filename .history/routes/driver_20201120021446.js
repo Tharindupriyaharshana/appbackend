@@ -66,7 +66,7 @@ router.get('/:driverid', async(req, res) => {
 
         {
             $lookup: {
-                from: "'Vehicles",
+                from: "'VehicleS",
                 localField: "userid",
                 foreignField: "userid",
                 as: "Vehicle"
@@ -75,7 +75,7 @@ router.get('/:driverid', async(req, res) => {
 
         },
     ]).then((documents => {
-        console.log(documents);
+
         res.status(200).json({ driver: documents })
     }));
 

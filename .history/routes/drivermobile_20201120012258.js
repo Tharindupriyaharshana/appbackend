@@ -139,13 +139,13 @@ router.get('/:mobilenum', async(req, res) => {
         function show() {
 
             Mobile.aggregate([
-                { $match: { "mobilenumber": Number(realsender) } },
+                { $match: { "mobilenumber": Number(req.params.mobilenum) } },
 
 
 
                 {
                     $lookup: {
-                        from: "Drivers",
+                        from: "users",
                         localField: "userid",
                         foreignField: "userid",
                         as: "user"
@@ -166,7 +166,7 @@ router.get('/:mobilenum', async(req, res) => {
                     userid: deta,
                     //userstatus: deta[0].user[0].status,
                     otp: otp,
-
+                    type: deta[0].user[0].type
 
 
                 });

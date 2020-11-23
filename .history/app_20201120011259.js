@@ -38,7 +38,6 @@ app.use('/driverm', dmobileRoute);
 app.use('/driver', driverRoute);
 app.use('/vehicle', vehicleRoute);
 app.use('/user', userRoute);
-app.use('/vroute', VroRoute);
 
 
 app.listen(port);

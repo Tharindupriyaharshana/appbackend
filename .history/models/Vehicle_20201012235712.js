@@ -9,7 +9,7 @@ const VehicleSchema = mongoose.Schema({
     tv: { type: String, default: "none" },
     ac: { type: String, default: "none" },
     wiffi: { type: String, default: "none" },
-    usb: { type: String, default: "none" },
+    music: { type: String, default: "none" },
     status: { type: String, default: "none" },
     img1: { type: String, default: "none" },
     img2: { type: String, default: "none" },

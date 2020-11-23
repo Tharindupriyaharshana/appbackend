@@ -66,16 +66,16 @@ router.get('/:driverid', async(req, res) => {
 
         {
             $lookup: {
-                from: "'Vehicles",
+                from: "'VehicleS",
                 localField: "userid",
                 foreignField: "userid",
-                as: "Vehicle"
+                as: "user"
             }
 
 
         },
     ]).then((documents => {
-        console.log(documents);
+
         res.status(200).json({ driver: documents })
     }));
 

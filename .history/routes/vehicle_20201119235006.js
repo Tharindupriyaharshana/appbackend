@@ -6,7 +6,7 @@ var request = require('request');
 
 
 router.post('/add', async(req, res) => {
-    console.log(req.body.vehicleid, req.body.type)
+
     const user = new Vehicle({
         userid: req.body.userid,
         vehicleid: req.body.vehicleid,

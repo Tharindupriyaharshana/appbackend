@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Mobile = require('../models/Mobile');
-const Driver = require('../models/Driver');
+
+const vroute = require('../models/Vroute');
 var request = require('request');
 
 
@@ -25,19 +25,16 @@ router.put("/:id", (req, res, next) => {
 
             _id: obid,
             userid: req.params.id,
-            fname: req.body.fname,
-            sname: req.body.sname,
-            city: req.body.city,
-            address: req.body.address,
-            email: req.body.email,
-            status: "created",
-            nicfront: req.body.nicfront,
-            nicback: req.body.nicback,
-            dliceanfront: req.body.dlifront,
-            dliceanback: req.body.dliback,
+            startone: req.params.startone,
+            stopone: req.params.stopone,
+            priceone: req.params.priceone,
+            starttwo: req.params.startwo,
+            stoptwo: req.params.stoptwo,
+            pricetwo: req.params.pricetwo,
+            startthree: req.params.startthree,
+            stopthree: stopthree,
+            pricethree: pricethree,
 
-            type: req.body.type,
-            regdate: req.body.regdate,
 
 
         });
@@ -63,19 +60,8 @@ router.get('/:driverid', async(req, res) => {
 
     Driver.aggregate([
         { $match: { "userid": Number(req.params.driverid) } },
-
-        {
-            $lookup: {
-                from: "'Vehicles",
-                localField: "userid",
-                foreignField: "userid",
-                as: "Vehicle"
-            }
-
-
-        },
     ]).then((documents => {
-        console.log(documents);
+
         res.status(200).json({ driver: documents })
     }));
 

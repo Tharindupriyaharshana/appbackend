@@ -63,19 +63,8 @@ router.get('/:driverid', async(req, res) => {
 
     Driver.aggregate([
         { $match: { "userid": Number(req.params.driverid) } },
-
-        {
-            $lookup: {
-                from: "'Vehicles",
-                localField: "userid",
-                foreignField: "userid",
-                as: "Vehicle"
-            }
-
-
-        },
     ]).then((documents => {
-        console.log(documents);
+
         res.status(200).json({ driver: documents })
     }));
 
