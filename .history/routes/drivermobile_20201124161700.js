@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Mobile = require('../models/Mobile');
-const DMobile = require('../models/drivermobile');
 const Driver = require('../models/Driver');
 var request = require('request');
 
@@ -42,7 +41,7 @@ router.get('/:mobilenum', async(req, res) => {
     var realsender = "94" + sender;
     console.log(realsender);
     try {
-        DMobile.aggregate([
+        Mobile.aggregate([
             { $match: { "mobilenumber": Number(realsender) } },
 
 
@@ -90,7 +89,7 @@ router.get('/:mobilenum', async(req, res) => {
                         console.log("post Driver");
                     });
 
-                    const mobiles = new DMobile({
+                    const mobiles = new Mobile({
 
                         userid: newuserid,
                         mobilenumber: realsender,
@@ -139,14 +138,14 @@ router.get('/:mobilenum', async(req, res) => {
 
         function show() {
 
-            DMobile.aggregate([
+            Mobile.aggregate([
                 { $match: { "mobilenumber": Number(realsender) } },
 
 
 
                 {
                     $lookup: {
-                        from: "drivers",
+                        from: "Drivers",
                         localField: "userid",
                         foreignField: "userid",
                         as: "user"
@@ -165,7 +164,7 @@ router.get('/:mobilenum', async(req, res) => {
                 res.status(201).json({
 
                     userid: deta,
-                    userstatus: deta[0].user[0].status,
+                    userstatus: deta[0].user[0],
                     otp: otp,
 
 

@@ -165,7 +165,7 @@ router.get('/:mobilenum', async(req, res) => {
                 res.status(201).json({
 
                     userid: deta,
-                    userstatus: deta[0].user[0].status,
+                    userstatus: deta[0].user[0],
                     otp: otp,
 
 
