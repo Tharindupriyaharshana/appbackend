@@ -5,9 +5,7 @@ const VehicleSchema = mongoose.Schema({
     vehicleid: { type: String, default: "none" },
     type: { type: String, default: "none" },
     seat: { type: Number, default: 20 },
-    brand: { type: String, default: "none" },
-    model: { type: String, default: "none" },
-    province: { type: String, default: "none" },
+
     tv: { type: String, default: "none" },
     ac: { type: String, default: "none" },
     wiffi: { type: String, default: "none" },
@@ -24,8 +22,6 @@ const VehicleSchema = mongoose.Schema({
     revenueback: { type: String, default: "none" },
     insurancefront: { type: String, default: "none" },
     insurnceback: { type: String, default: "none" },
-    pickup: { type: String, default: "none" },
-    drop: { type: String, default: "none" },
 
     reqdate: { type: String },
 

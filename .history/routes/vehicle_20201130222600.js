@@ -4,7 +4,6 @@ const Vehicle = require('../models/Vehicle');
 const Driver = require('../models/Driver');
 var request = require('request');
 const { updateMany } = require('../models/Driver');
-const { ObjectId } = require('mongodb');
 
 
 router.post('/add', async(req, res) => {
@@ -33,7 +32,7 @@ router.post('/add', async(req, res) => {
 
 router.put("/vehicle/:id", (req, res, next) => {
 
-    console.log("here", req.params.id);
+    console.log(req.params.id);
 
 
     Vehicle.aggregate([
@@ -55,8 +54,8 @@ router.put("/vehicle/:id", (req, res, next) => {
 
 
     function data() {
-        const user = new Vehicle({
-            _id: obid,
+        const user = new Driver({
+
             userid: userid,
             vehicleid: vehicleid,
             type: type,
@@ -84,7 +83,7 @@ router.put("/vehicle/:id", (req, res, next) => {
         });
         // console.log(user);
         try {
-            Vehicle.updateOne({ _id: obid }, user).then(result => {
+            Driver.updateOne({ _id: obid }, user).then(result => {
                 // console.log(result);
                 console.log("Sucess")
                 res.status(200).json({ message: "200", user });
@@ -223,22 +222,7 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 });
 
-
-router.put('/up/:id', function(req, res) {
-    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop }, function(
-        err,
-        result
-    ) {
-        if (err) {
-            res.send(err);
-        } else {
-            res.json(result);
-        }
-    });
-});
-
-
-router.put('/:id', (req, res, next) => {
+router.patch('/:id', (req, res, next) => {
 
     let obid;
     Vehicle.aggregate([
@@ -257,24 +241,8 @@ router.put('/:id', (req, res, next) => {
             const id = obid;
             const upda = req.body;
             const option = { new: true };
-            const user = new Vehicle({
-
-                pickup: req.body.pickup,
-                drop: req.body.drop,
-
-
-
-            });
-            Vehicle.updateOne({ _Id: obid }, { pickup: "colombo" }, function(
-                err,
-                result
-            ) {
-                if (err) {
-                    res.send(err);
-                } else {
-                    res.json(result);
-                }
-            });
+            const result = Vehicle.findByIdAndUpdate(id, upda, option);
+            res.send(result);
 
         } catch (error) {
             console.log(error.message)

@@ -55,8 +55,8 @@ router.put("/vehicle/:id", (req, res, next) => {
 
 
     function data() {
-        const user = new Vehicle({
-            _id: obid,
+        const user = new Driver({
+
             userid: userid,
             vehicleid: vehicleid,
             type: type,
@@ -84,7 +84,7 @@ router.put("/vehicle/:id", (req, res, next) => {
         });
         // console.log(user);
         try {
-            Vehicle.updateOne({ _id: obid }, user).then(result => {
+            Driver.updateOne({ _id: obid }, user).then(result => {
                 // console.log(result);
                 console.log("Sucess")
                 res.status(200).json({ message: "200", user });

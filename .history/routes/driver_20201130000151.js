@@ -92,8 +92,8 @@ router.put("/second/:id", (req, res, next) => {
             status: "Second",
             nicfront: req.body.nicfront,
             nicback: req.body.nicback,
-            dliceanfront: req.body.dliceanfront,
-            dliceanback: req.body.dliceanback,
+            dliceanfront: req.body.dlfront,
+            dliceanback: req.body.dlback,
 
 
 
@@ -125,7 +125,7 @@ router.get('/:driverid', async(req, res) => {
 
         {
             $lookup: {
-                from: "Vehicles",
+                from: "'Vehicles",
                 localField: "userid",
                 foreignField: "userid",
                 as: "Vehicle"

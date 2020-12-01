@@ -56,7 +56,7 @@ router.put("/vehicle/:id", (req, res, next) => {
 
     function data() {
         const user = new Vehicle({
-            _id: obid,
+            _id = obid,
             userid: userid,
             vehicleid: vehicleid,
             type: type,

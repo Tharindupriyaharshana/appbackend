@@ -68,13 +68,7 @@ router.put("/second/:id", (req, res, next) => {
         { $match: { "userid": Number(req.params.id) } },
     ]).then((documents => {
         console.log(documents[0])
-        obid = documents[0]._id;
-        userid = req.params.id;
-        fname = documents[0].fname;
-        sname = documents[0].sname;
-        city = documents[0].city;
-        address = documents[0].address;
-        email = documents[0].email;
+        obid = documents[0];
         data();
     }));
 
@@ -83,17 +77,12 @@ router.put("/second/:id", (req, res, next) => {
         const user = new Driver({
 
             _id: obid,
-            userid: userid,
-            fname: fname,
-            sname: sname,
-            city: city,
-            address: address,
-            email: email,
+
             status: "Second",
             nicfront: req.body.nicfront,
             nicback: req.body.nicback,
-            dliceanfront: req.body.dliceanfront,
-            dliceanback: req.body.dliceanback,
+            dliceanfront: req.body.dlfront,
+            dliceanback: req.body.dlback,
 
 
 
@@ -125,7 +114,7 @@ router.get('/:driverid', async(req, res) => {
 
         {
             $lookup: {
-                from: "Vehicles",
+                from: "'Vehicles",
                 localField: "userid",
                 foreignField: "userid",
                 as: "Vehicle"

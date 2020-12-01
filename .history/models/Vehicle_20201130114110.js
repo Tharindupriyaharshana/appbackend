@@ -24,8 +24,6 @@ const VehicleSchema = mongoose.Schema({
     revenueback: { type: String, default: "none" },
     insurancefront: { type: String, default: "none" },
     insurnceback: { type: String, default: "none" },
-    pickup: { type: String, default: "none" },
-    drop: { type: String, default: "none" },
 
     reqdate: { type: String },
 
