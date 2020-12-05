@@ -97,7 +97,6 @@ router.put("/vehicle/:id", (req, res, next) => {
         try {
             Vehicle.updateOne({ _id: obid }, user).then(result => {
                 // console.log(result);
-                userup();
                 console.log("Sucess")
                 res.status(200).json({ message: "200", user });
             })
@@ -105,15 +104,6 @@ router.put("/vehicle/:id", (req, res, next) => {
             console.log("Error: " + err);
         }
 
-    }
-
-    function userup() {
-        Driver.updateOne({ userid: userid }, { status: "vehicle2", }, function(
-            err,
-            result
-        ) {
-
-        });
     }
 
 
@@ -153,7 +143,7 @@ router.put("/pick/:id", (req, res, next) => {
             img4 = documents[0].img4,
             img5 = documents[0].img5,
             img6 = documents[0].img6,
-            reqdate = documents[0].reqdate,
+            reqdate = documents[0].img6,
             data();
     }));
 
@@ -246,7 +236,6 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 
 router.put('/up/:id', function(req, res) {
-    let userids = req.body.userid;
     Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
         err,
         result
@@ -254,21 +243,9 @@ router.put('/up/:id', function(req, res) {
         if (err) {
             res.send(err);
         } else {
-            userup();
             res.json(result);
         }
     });
-
-
-    function userup() {
-        Driver.updateOne({ userid: userids }, { status: "vehicle2", }, function(
-            err,
-            result
-        ) {
-
-        });
-    }
-
 });
 
 

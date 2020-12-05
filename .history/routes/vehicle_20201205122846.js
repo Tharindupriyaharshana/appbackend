@@ -108,7 +108,7 @@ router.put("/vehicle/:id", (req, res, next) => {
     }
 
     function userup() {
-        Driver.updateOne({ userid: userid }, { status: "vehicle2", }, function(
+        Driver.updateOne({ userid: userids }, { status: "vehicle2", }, function(
             err,
             result
         ) {
@@ -246,7 +246,6 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 
 router.put('/up/:id', function(req, res) {
-    let userids = req.body.userid;
     Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
         err,
         result
