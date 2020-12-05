@@ -69,7 +69,7 @@ router.put("/vehicle/:id", (req, res, next) => {
             wiffi: req.body.wiffi,
             usb: req.body.usb,
             mp3: req.body.mp3,
-            status: "vehicle2",
+            status: req.body.staus,
             img1: req.body.img1,
             img2: req.body.img2,
             img3: req.body.img3,
@@ -225,7 +225,7 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 
 router.put('/up/:id', function(req, res) {
-    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
+    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop }, function(
         err,
         result
     ) {

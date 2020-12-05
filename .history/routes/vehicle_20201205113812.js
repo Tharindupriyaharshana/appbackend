@@ -225,7 +225,7 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 
 router.put('/up/:id', function(req, res) {
-    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
+    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status = "location" }, function(
         err,
         result
     ) {
