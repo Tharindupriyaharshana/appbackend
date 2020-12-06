@@ -261,7 +261,7 @@ router.put('/up/:id', function(req, res) {
 
 
     function userup() {
-        Driver.updateOne({ userid: userids }, { status: "location", }, function(
+        Driver.updateOne({ userid: userids }, { status: "vehicle2", }, function(
             err,
             result
         ) {

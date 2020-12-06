@@ -45,7 +45,7 @@ router.post('/add', async(req, res) => {
 router.put("/vehicle/:id", (req, res, next) => {
 
     console.log("here", req.params.id);
-    // let userids = req.body.userid;
+    let userids = req.body.userid;
 
     Vehicle.aggregate([
         { $match: { "vehicleid": req.params.id } },
@@ -261,7 +261,7 @@ router.put('/up/:id', function(req, res) {
 
 
     function userup() {
-        Driver.updateOne({ userid: userids }, { status: "location", }, function(
+        Driver.updateOne({ userid: userids }, { status: "vehicle2", }, function(
             err,
             result
         ) {
