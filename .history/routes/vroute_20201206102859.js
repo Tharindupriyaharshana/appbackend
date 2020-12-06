@@ -92,7 +92,7 @@ router.post('/add', async(req, res) => {
     try {
         const saveuser = await user.save();
         userup();
-        res.json(saveuser + message);
+        res.json(saveuser, message);
 
     } catch (err) {
         res.json({ errormessage: err });
