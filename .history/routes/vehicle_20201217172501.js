@@ -247,7 +247,7 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 router.put('/up/:id', function(req, res) {
     let userids = req.body.userid;
-    Vehicle.updateOne({ "userid": Number(req.params.id) }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
+    Vehicle.updateOne({ vehicleid: req.params.id }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
         err,
         result
     ) {
@@ -262,7 +262,7 @@ router.put('/up/:id', function(req, res) {
 
 
     function userup() {
-        Driver.updateOne({ "userid": Number(req.params.id) }, { status: "location", }, function(
+        Driver.updateOne({ userid: userids }, { status: "location", }, function(
             err,
             result
         ) {
@@ -322,7 +322,7 @@ router.get('/:id', async(req, res) => {
 
 
     Vehicle.aggregate([
-        { $match: { "userid": Number(req.params.id) } },
+        { $match: { "vehicleid": req.params.id } },
     ]).then((documents => {
         //  console.log(documents[0])
         res.status(200).json({ vehicle: documents })
@@ -356,7 +356,7 @@ router.put("/update/:id", (req, res, next) => {
     let obid;
 
     Vehicle.aggregate([
-        { $match: { "userid": Number(req.params.id) } },
+        { $match: { "vehicleid": req.params.id } },
     ]).then((documents => {
         console.log(documents[0]._id)
         obid = documents[0]._id;
