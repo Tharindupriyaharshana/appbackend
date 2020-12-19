@@ -247,7 +247,6 @@ router.patch("/pickme/:id", (req, res, next) => {
 
 router.put('/up/:id', function(req, res) {
     //  let userids = req.body.userid;
-    console.log(Number(req.params.id));
     Vehicle.updateOne({ "userid": Number(req.params.id) }, { pickup: req.body.pick, drop: req.body.drop, status: "location", }, function(
         err,
         result
